@@ -1,0 +1,9 @@
+
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-2xl ">Addresses </h1>
+  <button (click)="closeAddressModal()" class="p-2 px-3 border border-blue-800 rounded-2xl text-blue-800 hover:bg-blue-800 hover:text-white">Add new address</button>
+</div>
+
+<div *ngIf="addresses.length > 0" class="md:p-8">
+<app-address-edit-panel *ngFor="let address of addresses" [address]="address">  </app-address-edit-panel>
+</div>

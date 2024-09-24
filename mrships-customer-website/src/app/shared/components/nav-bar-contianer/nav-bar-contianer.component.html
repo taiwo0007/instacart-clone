@@ -1,0 +1,4 @@
+
+<app-desktop-nav-bar *ngIf="!isMobile && isAuthenticated" ></app-desktop-nav-bar>
+<app-mobile-nav-bar *ngIf="isMobile && isAuthenticated"></app-mobile-nav-bar>
+<app-auth-mobile-nav-bar *ngIf="isMobile && ! isAuthenticated"></app-auth-mobile-nav-bar>

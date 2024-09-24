@@ -1,0 +1,46 @@
+
+
+<div class="p-4 border rounded-xl max-w-2xl shadow m-3 ">
+  <div class=" space-x-14 flex flex-wrap space-y-3 md:space-y-0 md:items-center bg-slate-50 p-2">
+<!--    Logo-->
+    <div class="flex items-center space-x-2">
+      <!-- <img src="/assets/image/store-images/stella.avif" class="h-10 w-10 object-contain border border-slate-200 rounded-full"  alt=""> -->
+      <p class="font-bold normal-case text-blue-800">{{order?.status}}</p>
+    </div>
+<!-- details -->
+    <div class="space-y-1">
+      <p class="text-gray-500 font-semibold text-xs">Delivery time</p>
+      <p class="text-xs font-semibold">{{order?.orderDateTime | date : 'dd-MM-YYY'}}</p>
+    </div>
+
+    <!-- <div class="space-y-1">
+      <p class="text-gray-500 font-semibold text-xs">Amount</p>
+      <p class="text-xs font-semibold">{{order?.orderItems?.length}}</p>
+    </div> -->
+
+    <div class="space-y-1">
+      <p class="text-gray-500 font-semibold text-xs">Total</p>
+      <p class="text-xs font-semibold">{{order?.totalAmount | currency: 'EUR'}}</p>
+    </div>
+
+    <div class="space-y-1">
+      <p class="text-gray-500 font-semibold text-xs">ID</p>
+      <p class="text-xs font-semibold">{{order?.id}}</p>
+    </div>
+
+  </div>
+
+  <div *ngIf="order" class="m-3 mb-6 mt-7 grid grid-cols-3 justify-items-center sm:grid-cols-4 items-center justify-center gap-9 md:gap-0 mx-auto md:grid-cols-9">
+    <img *ngFor="let order_item of order?.orderItems | slice:0:8" [src]="order_item?.variation?.productImages?.[0]?.imageUrl" class="w-10 h-10 object-contain rounded" alt="">
+   
+    
+    <div *ngIf="order?.orderItems && order.orderItems.length > 8" class="w-10 h-10 rounded-lg font-bold border p-2 bg-blue-700 my-auto text-white flex items-center justify-center">
+      <button class="font-bold p-2 text-2xl">{{order.orderItems.length - 7}}+</button>
+    </div>
+    
+
+  </div>
+  <!-- <div class="border-t border-t-slate-200 flex justify-end items-center mt-3 pt-3">
+    <button class="text-blue-800 font-bold text-end ml-auto">View more</button>
+  </div> -->
+</div>

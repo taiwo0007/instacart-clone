@@ -1,0 +1,46 @@
+<header id="desktop-header" class="shadow-sm z-[9999] shadow-sm fixed w-full top-0 left-0 bg-[#122ed7]">
+  <!--  <promotion-banner></promotion-banner>-->
+
+    <div [ngClass]="{'grid-cols-[30px_minmax(0,210px)_1fr_210px_70px]':isAuthenticated,'grid-cols-[30px_minmax(0,210px)_1fr_90px_90px]':!isAuthenticated}"
+    class="border grid  bg-white items-center p-4  gap-2">
+
+      <!-- Hamburger -->
+      <div id="burger-menu-container" class="mx-auto">
+        <button (click)="openMainSideBar()">
+          <app-burger-icon></app-burger-icon>
+        </button>
+      </div>
+
+      <!-- Logo -->
+      <img [routerLink]="['']" src="/assets/image/logo.png" id="logo" class="w-32 ml-2 cursor-pointer" alt="">
+
+      <!-- Search -->
+
+         <app-search-input [isMainSearchInput]="true"></app-search-input>
+
+      <div *ngIf="isAuthenticated" class="mx-auto">
+
+        <address-placeholder></address-placeholder>
+      </div>
+
+      <button *ngIf="!isAuthenticated" (click)="openLoginModal()" class="border font-bold border-blue-700 text-blue-700 border-2 rounded-3xl p-2 px-3">
+        Sign In
+      </button>
+
+
+      <button *ngIf="!isAuthenticated" (click)="openSignUpModal()" class="text-white font-bold bg-blue-700 border-2 rounded-3xl p-2 px-3">
+        Sign Up
+      </button>
+
+
+      <!-- Cart -->
+      <div *ngIf="isAuthenticated">
+        <div class=" flex justify-center items-center">
+         <app-cart-icon></app-cart-icon>
+        </div>
+      </div>
+
+
+    </div>
+
+  </header>

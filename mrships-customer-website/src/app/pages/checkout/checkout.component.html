@@ -1,0 +1,15 @@
+<app-logo-navbar></app-logo-navbar>
+<section id="checkout" class=" bg-slate-100 h-screen">
+
+
+  <div *ngIf="calculatedFee" class="pt-28 max-w-[80rem] mx-auto  grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="md:col-span-2">
+      <app-checkout-form [calculatedFee]="calculatedFee"></app-checkout-form>
+
+    </div>
+    <app-checkout-price-summary (submitForm)="onSiblingSubmit()" *ngIf="calculatedFee" [calculatedFee]="calculatedFee"></app-checkout-price-summary>
+
+
+  </div>
+</section>

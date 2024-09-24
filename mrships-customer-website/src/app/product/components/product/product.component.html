@@ -1,0 +1,57 @@
+<div class="relative">
+  <img (click)="openProductDetail(product)"
+       class="hover:cursor-pointer w-40 h-40 mx-auto object-contain"
+       [src]="product?.variations?.[0]?.productImages?.[0]?.imageUrl"
+       alt="">
+  <button (click)="addToCart()" *ngIf="!isInCart"
+          class="flex items-center bg-blue-700 absolute duration-300 ease-in-out  top-0 right-0 text-white p-2 px-3 shadow-2xl hover:bg-blue-950 rounded-full">
+
+    <svg class="" xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" color="white">
+      <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+      <path fill="white"
+            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+    </svg>
+    <!--      <span class="ml-2">Add</span>-->
+  </button>
+
+
+  <div *ngIf="isInCart"
+       class="flex items-center bg-blue-700 absolute top-0 right-0 text-white shadow-2xl hover:bg-blue-700 rounded-3xl">
+
+    <button *ngIf="productQuantity !== undefined && productQuantity > 1" (click)="decrementQuantity()"
+            class="hover:bg-blue-900 h-full p-2 pl-3 rounded-l-3xl">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"
+           class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"/>
+      </svg>
+
+    </button>
+    <button *ngIf="productQuantity == 1" (click)="decrementQuantity()"
+            class="hover:bg-blue-900 h-full p-2 pl-3 rounded-l-3xl">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"
+           class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/>
+      </svg>
+
+    </button>
+    <span class="text-md mx-6">{{productQuantity}}</span>
+    <button (click)="incrementQuantity()" class="hover:bg-blue-900 h-full p-2 pr-3 rounded-r-3xl">
+      <svg class="" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512" color="white">
+        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path fill="white"
+              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="p-2">
+    <!-- <p style="font-size: .6rem" class="p-1 font-semibold bg-emerald-200 w-max rounded">IN STOCK</p> -->
+    <div class="flex items-end justify-between ">
+      <p class="mt-2 text-md font-black mr-2">{{(product?.variations[0].price || 2.99) | currency: 'EUR'}}</p>
+      <!--      <p class="mt-2 font-light line-through">€1.29</p>-->
+    </div>
+    <span style="line-height: 1.3rem" class="">{{product?.name || 'product'}}</span>
+    <p class="text-xs text-slate-500 ">289g</p>
+  </div>
+</div>

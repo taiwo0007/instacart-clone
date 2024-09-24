@@ -1,0 +1,40 @@
+<div class="mb-7 mt-3 flex justify-between items-center md:mx-4">
+  <h2 class="font-bold text-2xl">{{ subCategory?.subCategoryName }}</h2>
+  <div class="flex items-center">
+    <button (click)="navigateToViewAll()" class="mr-2">View all</button>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="0.7em"
+      viewBox="0 0 320 512"
+    >
+      <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+      <path
+        d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+      />
+    </svg>
+  </div>
+</div>
+<div *ngIf="windowWidth > 768" class="grid custom-grid mb-10 md:mx-4">
+  <app-product
+    [isCatRoute]="isCatRoute"
+    *ngFor="let product of products"
+    [product]="product"
+  ></app-product>
+</div>
+
+<div
+  *ngIf="windowWidth <= 768"
+  [ngStyle]="{
+    'scroll-snap-type': 'x mandatory',
+    '-webkit-overflow-scrolling': 'touch',
+    'grid-template-columns': 'repeat(' + products.length + ', 43%)'
+  }"
+  class="mb-10 grid md:mx-4 overflow-x-auto snap-x snap-mandatory scroll-section"
+>
+  <app-product
+    class="snap-start"
+    [isCatRoute]="isCatRoute"
+    *ngFor="let product of products"
+    [product]="product"
+  ></app-product>
+</div>

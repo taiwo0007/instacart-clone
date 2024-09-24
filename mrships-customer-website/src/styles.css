@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0;
+  font-family: 'h-medium', sans-serif; }
+
+ @font-face {
+  font-family: "h-medium";
+  src: url("/assets/fonts/Swansea-q3pd.ttf") format("truetype");
+  font-weight: auto;
+  font-style: auto;
+}
+
+/* @font-face {
+  font-family: "OpenSansSemiBold";
+  src: url("/assets/fonts/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: auto;
+  font-style: auto;
+}
+
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url("/assets/fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: auto;
+  font-style: auto;
+} */
+
+/* .border-t border-t-slate-100font-bold {
+  font-family: 'OpenSansBold', sans-serif !important;
+}
+*/
+.font-semibold {
+  font-family: 'h-medium', Helvetica, system-ui !important;
+}
+
+/* p{
+  font-family: 'h-medium', Helvetica, system-ui !important;
+
+} */
+
+/*#overlay {*/
+/*  position: fixed; !* Sit on top of the page content *!*/
+/*  display: none; !* Hidden by default *!*/
+/*  width: 100%; !* Full width (cover the whole page) *!*/
+/*  height: 100%; !* Full height (cover the whole page) *!*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  background-color: rgba(0, 0, 0, 0.24); !* Black background with opacity *!*/
+/*  z-index: 999; !* Specify a stack order in case you're using a different order for other elements *!*/
+/*}*/

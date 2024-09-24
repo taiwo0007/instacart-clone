@@ -1,0 +1,11 @@
+<app-product-detail-modal
+  *ngIf="isProductDetailOpened"
+></app-product-detail-modal>
+<app-branch-nav-bar-container></app-branch-nav-bar-container>
+<app-branch-cart *ngIf="isBranchCartOpened"></app-branch-cart>
+
+<app-branch-sidebar></app-branch-sidebar>
+
+<div class="p-4 md:ml-64 md:mt-24">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,9 @@
+<div class="flex items-center">
+
+  <div class="mr-3">
+    <h2 class="font-bold">Total: <span class="font-normal ml-2">{{total | currency: 'EUR'}}</span></h2>
+    <p class="text-xs">(Excl. shipping)</p>
+
+  </div>
+  <button (click)="closeCart()" [routerLink]="['/checkout']" class="bg-blue-700 flex-1 p-3 rounded-xl mx-3 text-white">Checkout</button>
+</div>

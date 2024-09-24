@@ -1,0 +1,126 @@
+<form [formGroup]="form"  class="bg-white">
+
+<p *ngIf="error" class="text-center mx-auto text-red-500 p-7"> Please check all fields and try agian</p>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="stepsCompleted[0]" class="border-b">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="flex items-center space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="blue" height="2em" viewBox="0 0 512 512">
+            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256a128 128 0 1 0 256 0 128 128 0 1 0 -256 0zm128-80a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" />
+          </svg>
+          <div>
+            <h2 class="font-bold text-xl">{{priamryAddress?.addressLine1}}</h2>
+            <p class="text-slate-600">{{priamryAddress?.state}} <span *ngIf="!priamryAddress"> Please add an address</span>, <span *ngIf="!priamryAddress"> click edit to add an address</span> {{priamryAddress?.postalCode}}</p>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="flex justify-end">
+        <button (click)="opoenAddressModal()" class="underline text-blue-800 text-end z-50">Edit</button>
+
+      </div>
+      <button [disabled]="!priamryAddress" type="button" (click)="completeStep(0)" class="bg-blue-700 w-full mx-auto p-4 m-3 rounded-xl text-white">Continue</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="border-b" [expanded]="stepsCompleted[1]" >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="flex items-center space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" height="2em" fill="blue" viewBox="0 0 512 512">
+            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
+          </svg>
+          <div>
+            <h2 class="font-bold text-xl">Choose a time of delivery</h2>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-delivery-times-dates (selectedDate)="handleSelectedDate($event)"></app-delivery-times-dates>
+      <button (click)="completeStep(1)" type="button" class="bg-blue-700 w-full mx-auto p-4 m-3 mt-9 rounded-xl text-white">Continue</button>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="border-b" [expanded]="stepsCompleted[2]" >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="flex items-center space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="blue" height="2em" viewBox="0 0 576 512">
+            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z" />
+          </svg>
+          <div>
+            <h2 class="font-bold text-xl">Payment</h2>
+          </div>
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <div class="flex gap-2">
+        <!-- <button [disabled]="true" class="bg-slate-100 w-full mx-auto p-4 m-3 rounded-xl text-lg text-white">Debit/Credit Card (coming soon)</button> -->
+        <button type="button" (click)="completeStep(2)" class="border-slate-800 border w-full mx-auto p-4 m-3 rounded-xl text-lg ">Cash</button>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!customerState?.phoneNumber" class="border-b" [expanded]="stepsCompleted[3]" >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="flex items-center space-x-5">
+
+          <svg xmlns="http://www.w3.org/2000/svg" height="2em" fill="blue" viewBox="0 0 384 512">
+            <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
+          </svg>
+          <div class="flex ml-2">
+            <h2 class="font-bold text-xl">Mobile number</h2>
+          </div>
+
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+    <div > 
+
+        <p class="my-1 mb-2">This will help us get in contact with you concerning your order</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <mat-icon matPrefix>phone</mat-icon>
+          <input formControlName="mobileNumber" matInput placeholder="0873455432" required>
+          <mat-hint>Include area code</mat-hint>
+        </mat-form-field>
+   
+    </div>
+      <button type="button" (click)="completeStep(3)" class="bg-blue-700 px-5 py-2 text-white rounded mt-4">Update</button>
+
+
+    </mat-expansion-panel>
+
+
+  <mat-expansion-panel *ngIf="!customerState?.firstName" class="border-b" [expanded]="stepsCompleted[4]" >
+    <mat-expansion-panel-header>
+      <mat-panel-title class="flex items-center space-x-3">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="blue" class="w-8 h-8">
+          <path fill-rule="evenodd" d="M4.5 3.75a3 3 0 00-3 3v10.5a3 3 0 003 3h15a3 3 0 003-3V6.75a3 3 0 00-3-3h-15zm4.125 3a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm-3.873 8.703a4.126 4.126 0 017.746 0 .75.75 0 01-.351.92 7.47 7.47 0 01-3.522.877 7.47 7.47 0 01-3.522-.877.75.75 0 01-.351-.92zM15 8.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15zM14.25 12a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H15a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15z" clip-rule="evenodd" />
+        </svg>
+        <div class="flex ml-2">
+          <h2 class="font-semibold text-xl">Customer Details</h2>
+        </div>
+
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p class="my-1 mb-2">This will help us to identify you for future purchases</p>
+
+      <div class="md:flex md:gap-x-3">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName" matInput placeholder="Bob" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName" matInput placeholder="Donald" required>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <button type="button" (click)="completeStep(4)" class="bg-blue-700 px-5 py-2 text-white rounded mt-4">Save</button> -->
+
+  </mat-expansion-panel>
+  </mat-accordion>
+</form>

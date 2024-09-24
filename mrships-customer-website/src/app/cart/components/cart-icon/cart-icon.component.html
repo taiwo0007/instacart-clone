@@ -1,0 +1,10 @@
+<button class="relative py-2">
+  <div class="t-0 top-0 absolute left-3">
+    <p *ngIf="(cartQuantity$ | async) !== 0"
+       style="font-size: .81rem !important;"
+       class="flex h-2 w-2 items-center justify-center font-semibold rounded-full bg-blue-700 p-3 text-xs text-white">
+      {{cartQuantity$ | async}}
+    </p>
+  </div>
+  <img src="/assets/svg/cart-icon.svg" class="mt-2 h-6 w-6" alt="SVG Image">
+</button>

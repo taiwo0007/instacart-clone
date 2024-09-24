@@ -1,0 +1,19 @@
+<div class="mb-7 mt-3 flex  justify-between items-center md:mx-4">
+
+    <a class="flex gap-x-4 hover:cursor-pointer">
+        <img class="w-14 h-14 object-contain rounded-full border border-slate-100" [src]="branchProduct.branch.store.logoUrl" alt="">
+        <div class="flex items-center">
+            <h3 class="font-semibold">{{branchProduct.branch.store.name}}</h3>
+        </div>
+    </a>
+    <div class="flex items-center">
+      <button [routerLink]="['/branch',branchProduct.branch.store.name ,'shop']" class="mr-2 font-bold"> View all products</button>
+      <svg xmlns="http://www.w3.org/2000/svg" height="0.7em" viewBox="0 0 320 512">
+        <path
+          d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+      </svg>
+    </div>
+  </div>
+  <div class="grid custom-grid border-b pb-10 md:mx-4">
+      <app-simple-product [isFromSearchRoute]="true" [branch]="branchProduct.branch" [product]="product"  *ngFor="let product of products"></app-simple-product>
+  </div>

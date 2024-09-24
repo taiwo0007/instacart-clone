@@ -1,0 +1,3 @@
+  <app-branch-desktop-nav-bar *ngIf="!isMobile" ></app-branch-desktop-nav-bar >
+  <app-branch-mobile-nav-bar (toggleBurgerBar)="toggleBurgerBarHandler($event)"  *ngIf="isMobile"></app-branch-mobile-nav-bar>
+

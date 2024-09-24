@@ -1,0 +1,11 @@
+
+<div class="mb-7 mt-3 flex justify-between items-center md:mx-4">
+  <h2 class="font-bold text-2xl">{{subCat?.subCategoryName}}</h2>
+
+</div>
+
+<app-expanded-product-list
+  *ngIf="subCat"
+  [isCatRoute]="true"
+  [products]="subCat.products">
+</app-expanded-product-list>

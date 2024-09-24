@@ -1,0 +1,23 @@
+<div class="mt-10">
+
+
+
+
+    <div *ngFor="let address of addressess" class="relative shadow-sm my-2 flex items-center justify-between rounded-2xl p-4"
+        [ngClass]="{' border-blue-600 border-2': primaryAddress?.id === address?.id, 'border border-slate-300': primaryAddress?.id !== address?.id}">
+
+        <div>
+            <p class="font-bold text-lg">{{address?.addressLine1}}</p>
+            <p>{{address?.addressLine2}}</p>
+            <p>{{address?.country}}</p>
+            <p>{{address?.postalCode}}</p>
+        </div>
+        <button (click)="navigateToEditAddress(address)"
+            class="text-blue-800 hover:cursor-pointer hover:underline">Edit</button>
+
+        <span *ngIf="primaryAddress?.id === address?.id"
+            class="bg-blue-600 absolute top-0 right-0 p-2 text-sm text-white rounded-se-xl">Primary address</span>
+
+    </div>
+
+</div>

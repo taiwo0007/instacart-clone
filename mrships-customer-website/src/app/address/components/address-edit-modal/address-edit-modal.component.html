@@ -1,0 +1,41 @@
+<div (click)="closeAddressModal()" id="overlay"></div>
+
+<!-- The Modal -->
+<div
+  class="z-[99999] fixed shadow-2xl left-0 bg-white right-0 top-0 md:rounded-xl m-4 bottom-0 md:w-[38rem] md:h-[43rem] mx-auto my-auto overflow-auto">
+
+
+  <div class="mb-5 flex p-5 mb-3">
+    <p class="font-bold text-lg">Update Address</p>
+    <button (click)="closeAddressModal()" class="ml-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
+        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
+      </svg>
+    </button>
+  </div>
+
+
+  <div *ngIf="!showAddressList" id="modal-content" class="bg-white h-[100%] w-[100%] mx-auto rounded-xl ">
+
+
+    <div class="px-6 mx-auto">
+      <app-address-edit-form [addressToEdit]="editAddress"></app-address-edit-form>
+    </div>
+
+
+
+  </div>
+
+  <div class="p-4" *ngIf="showAddressList">
+
+    <button (click)="setShowAddress(false)" type="submit" class="w-full p-4 bg-blue-700 text-white rounded-lg mt-1">Add
+      new address</button>
+    <app-address-list [primaryAddress]="primaryAddress" (ShowAddressListEvent)="updateShowAddressList($event)"
+      [addressess]="addressess"></app-address-list>
+  </div>
+
+
+
+</div>

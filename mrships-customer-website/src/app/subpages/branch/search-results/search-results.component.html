@@ -1,0 +1,26 @@
+
+
+<div class="mb-7 mt-3 flex justify-between items-center mb-6 pb-3 md:mx-4">
+  <h2 class="font-bold text-2xl">Search results for "{{searchTerm}}"</h2>
+
+</div>
+
+<app-expanded-product-list
+  *ngIf="products"
+  [isFromSearchRoute]="true"
+  [isCatRoute]="true"
+  [branchId]="branchId"
+  [products]="products">
+
+</app-expanded-product-list>
+
+
+
+<!--<div class="mx-auto h-screen w-screen" *ngIf="products.length === 0">-->
+
+<!--  <h1 class="mx-auto my-auto h-auto w-auto">No Search Results Founds</h1>-->
+
+<!--</div>-->
+<div   *ngIf ="subCategoryProducts" class="p-6 mt-3 border-t border-t-slate-200 pt-16 mt-16">
+  <app-extra-product-list [title]="'Related Products'" [products]="subCategoryProducts"></app-extra-product-list>
+</div>

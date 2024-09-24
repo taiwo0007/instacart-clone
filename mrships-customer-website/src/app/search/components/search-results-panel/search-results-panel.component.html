@@ -1,0 +1,16 @@
+<div class="bg-white shadow-2xl cursor-pointer z-[99999] border border-slate-100 overflow-auto absolute mt-3 rounded-xl h-[auto] w-full">
+  <ul class="p-3">
+    <ng-container *ngIf="results">
+      <li (click)="updateSelectedInput(product?.name)"       
+      [routerLink]="[isMainSearchInput ? 'all-branch-products-search' : 'search-results']"
+      [queryParams]="{ searchTerm: product?.name }"      
+      *ngFor="let product of results" class="flex items-center space-x-2 p-1 font-light rounded-xl hover:bg-slate-100">
+        <a class="flex items-center space-x-2" >
+          <img class="w-11 h-11 object-contain"  [src]="product?.variations?.[0]?.productImages?.[0]?.imageUrl" alt="">
+          <p class="font-semibold" *ngIf="product">{{product?.name |  boldWords:['oi'] }}</p>
+        </a>
+      </li>
+    </ng-container>
+
+  </ul>
+</div>

@@ -1,0 +1,30 @@
+<app-nav-bar-contianer></app-nav-bar-contianer>
+
+<section class=" mb-7  mt-12 p-5 md:mt-24
+         md:max-w-[80rem]  xl:max-w-[90rem] mx-auto   pb-3 ">
+
+    <div class="">
+        <h2 class="font-bold text-3xl">Search results for <span class="font-black">"{{searchTerm}}"</span></h2>
+
+    </div>
+
+    <div *ngIf="branchProducts" class="mx-auto  mt-10">
+
+        <app-branch-product-list [branchProducts]="branchProducts"> </app-branch-product-list>
+
+
+    </div>
+
+
+    <!--<div class="mx-auto h-screen w-screen" *ngIf="products.length === 0">-->
+
+    <!--  <h1 class="mx-auto my-auto h-auto w-auto">No Search Results Founds</h1>-->
+
+    <!--</div>-->
+    <!-- <div   *ngIf ="subCategoryProducts" class="p-6 mt-3 border-t border-t-slate-200 pt-16 mt-16">
+    <app-extra-product-list [title]="'Related Products'" [products]="subCategoryProducts"></app-extra-product-list>
+  </div> -->
+
+
+
+</section>

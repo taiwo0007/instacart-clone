@@ -1,0 +1,63 @@
+<header id="mobile-header" class="px-4 block bg-white mx-auto z-[9999] lg:hidden border-b-2 pb-1 sticky rounded">
+
+  <div
+    class="rounded  pt-4 justify-center z-[9999] content-center grid grid-cols-[60px_minmax(0,_1fr)_60px] items-center border-t-black">
+    <!-- Burger bar -->
+    <div class="z-[9999]">
+      <button (click)="openMainSideBar()" class="z-[9999]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-8 h-10 stroke-black">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Logo -->
+    <img [routerLink]="['']" src="/assets/image/logo.png" class="w-32 mx-auto z-[9999] hover:cursor-pointer" alt="">
+
+    <!-- Cart -->
+
+    <div *ngIf="isAuthenticated" class="mx-auto">
+      <app-cart-icon></app-cart-icon>
+    </div>
+    <!-- Location -->
+    <div *ngIf="isAuthenticated" class="mydiv text-center col-span-full items-center mx-auto mt-2 z-[9999]">
+      <address-placeholder></address-placeholder>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <!-- Search -->
+  <app-search-input *ngIf="isAuthenticated" [isMainSearchInput]="true"></app-search-input>
+
+
+</header>
+
+<header id="mobile-header-under bg-white z-[999] "
+  class="px-3 mx-auto left-0 right-0 block lg:hidden shadow-md z-[999]  bg-white fixed top-0 box-border">
+
+  <div
+    class="  pt-1 justify-center content-center grid grid-cols-[40px_minmax(0,_1fr)_50px] items-center border-t-black">
+    <!-- Burger bar -->
+    <div>
+      <button (click)="openMainSideBar()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-8 h-10 stroke-black">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+      <!-- Search  -->
+    </div>
+    <div class="relative ">
+      <app-search-input [isMainSearchInput]="true"></app-search-input>
+
+    </div>
+
+
+    <!-- Cart -->
+
+    <div class="mx-auto">
+      <app-cart-icon></app-cart-icon>
+    </div>
+  </div>
+</header>

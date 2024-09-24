@@ -1,0 +1,7 @@
+<div *ngFor="let cat of branch?.categories">
+  <div *ngFor="let subCat of cat.subCategories; let first = first">
+    <ng-container *ngIf="first">
+      <app-product-list [subCategory]="subCat" ></app-product-list>
+    </ng-container>
+  </div>
+</div>

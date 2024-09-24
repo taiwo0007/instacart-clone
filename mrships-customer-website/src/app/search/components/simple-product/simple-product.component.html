@@ -1,0 +1,26 @@
+<div class="relative">
+    <img (click)="openProductDetail(product)"
+         class="hover:cursor-pointer w-40 h-40 mx-auto object-contain"
+         [src]="product?.variations[0].productImages[0].imageUrl"
+         alt="">
+    <!-- <button (click)="addToCart()" *ngIf="!isInCart"
+            class="flex items-center bg-blue-700 absolute duration-300 ease-in-out  top-0 right-0 text-white p-2 px-3 shadow-2xl hover:bg-blue-950 rounded-full">
+  
+      <svg class="" xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" color="white">
+        <path fill="white"
+              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+      </svg>
+    </button> -->
+
+  
+    <div class="p-2">
+      <p style="font-size: .6rem" class="p-1 font-semibold bg-emerald-200 w-max rounded">IN STOCK</p>
+      <div class="flex items-end justify-between ">
+        <p class="mt-2 text-md font-black mr-2">{{(product?.variations[0].price || 2.99) | currency: 'EUR'}}</p>
+        <!--      <p class="mt-2 font-light line-through">€1.29</p>-->
+      </div>
+      <span style="line-height: 1.3rem" class="">{{product?.name || 'product'}}</span>
+      <p class="text-xs text-slate-500 ">100g</p>
+    </div>
+  </div>
+  

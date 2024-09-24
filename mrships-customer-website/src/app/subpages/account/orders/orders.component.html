@@ -1,0 +1,17 @@
+<h1 class="font-bold text-2xl ">Orders </h1>
+
+<div class="md:p-8">
+  <div class="md:mt-10 mt-4">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="custom-tab-group">
+      <mat-tab label="Ongoing">
+        <app-ongoing-tab [orders]="ongoingOrders" ></app-ongoing-tab>
+      </mat-tab>
+      <mat-tab label="Past"><app-past-tab [orders]="pastOrders"></app-past-tab></mat-tab>
+      <mat-tab disabled label=""></mat-tab>
+      <mat-tab disabled label=""></mat-tab>
+      <mat-tab disabled label=""></mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+</div>
